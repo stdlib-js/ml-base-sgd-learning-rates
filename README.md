@@ -45,32 +45,38 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/ml-base-sgd-learning-rates
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var learningRates = require( '@stdlib/ml-base-sgd-learning-rates' );
+learningRates = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/ml-base-sgd-learning-rates@umd/browser.js' )
+```
+
+To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+
+```javascript
+var learningRates = require( 'path/to/vendor/umd/ml-base-sgd-learning-rates/index.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ml-base-sgd-learning-rates@umd/browser.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.learningRates;
+})();
+</script>
 ```
 
 #### learningRates()
@@ -109,8 +115,13 @@ The output array contains the following learning rate schedulers:
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var contains = require( '@stdlib/array-base-assert-contains' ).factory;
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-base-assert-contains@umd/browser.js"></script>
+<script type="text/javascript">
+(function () {.factory;
 var learningRates = require( '@stdlib/ml-base-sgd-learning-rates' );
 
 var isLearningRate = contains( learningRates() );
@@ -123,6 +134,11 @@ bool = isLearningRate( 'pegasos' );
 
 bool = isLearningRate( 'beep' );
 // returns false
+
+})();
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -131,72 +147,7 @@ bool = isLearningRate( 'beep' );
 
 <!-- C interface documentation. -->
 
-* * *
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/ml/base/sgd/learning_rates.h"
-```
-
-#### STDLIB_ML_SGD_LEARNING_RATE
-
-An enumeration of SGD learning rate schedulers with the following fields:
-
--   **STDLIB_ML_SGD_BASIC**: basic learning rate function according to the formula `10/(10+t)` where `t` is the current iteration.
--   **STDLIB_ML_SGD_CONSTANT**: constant learning rate function.
--   **STDLIB_ML_SGD_INVSCALING**: inverse scaling learning rate function according to the formula `eta0/pow(t, power_t)` where `eta0` is the initial learning rate and `power_t` is the exponent controlling how quickly the learning rate decreases.
--   **STDLIB_ML_SGD_PEGASOS**: Pegasos learning rate function according to the formula `1/(lambda*t)` where `t` is the current iteration and `lambda` is the regularization parameter.
-
-```c
-#include "stdlib/ml/base/sgd/learning_rates.h"
-
-const enum STDLIB_ML_SGD_LEARNING_RATE v = STDLIB_ML_SGD_BASIC;
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-### Notes
-
--   Enumeration constants should be considered opaque values, and one should **not** rely on specific integer values.
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
 
 <!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
